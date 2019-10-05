@@ -1,7 +1,6 @@
 package com.example.cvapp.ui
 
 
-
 class Resoource<T>(val status: AuthStatus, val data: T?, val message: String?) {
 
     enum class AuthStatus {
