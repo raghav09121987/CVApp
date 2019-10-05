@@ -2,10 +2,9 @@ package com.example.cvapp.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.RequestManager
@@ -15,7 +14,6 @@ import com.example.cvapp.models.PastExperience
 import com.example.cvapp.viewmodels.ViewModelsProvidersFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_cv.*
-import kotlinx.android.synthetic.main.past_experience.*
 import kotlinx.android.synthetic.main.past_experience.view.*
 import javax.inject.Inject
 
@@ -36,17 +34,18 @@ class CVActivity : DaggerAppCompatActivity() {
         viewModel.response().observe(this, Observer {
             if (it != null) {
                 when (it.status) {
-                    Resoource.AuthStatus.LOADING -> {
+                    Resource.AuthStatus.LOADING -> {
                         showProgressBar(true)
                     }
 
-                    Resoource.AuthStatus.SUCCESS -> {
+                    Resource.AuthStatus.SUCCESS -> {
                         pastExperienceContainer.removeAllViews()
                         showProgressBar(false)
                         populateData(it.data)
                     }
 
-                    Resoource.AuthStatus.ERROR -> {
+                    Resource.AuthStatus.ERROR -> {
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                         showProgressBar(false)
                     }
                 }

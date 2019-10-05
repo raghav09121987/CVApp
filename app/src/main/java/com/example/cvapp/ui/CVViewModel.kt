@@ -10,13 +10,13 @@ import javax.inject.Inject
 
 class CVViewModel @Inject constructor(private val repository: CVRepository): ViewModel() {
 
-   var data: MediatorLiveData<Resoource<CVResponse>> = MediatorLiveData()
+   var data: MediatorLiveData<Resource<CVResponse>> = MediatorLiveData()
 
-    fun response(): LiveData<Resoource<CVResponse>> {
+    fun response(): LiveData<Resource<CVResponse>> {
         return data
     }
     fun getCV(){
-        data.value = Resoource.loading()
+        data.value = Resource.loading()
         var source = LiveDataReactiveStreams.fromPublisher(repository.getCVData())
         with(data) {
             addSource(source) { res -> data.value = res}

@@ -13,7 +13,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:paddingBottom="10dp"
+                android:paddingBottom="@dimen/margin_10"
                 app:layout_constraintBottom_toBottomOf="parent">
             <ProgressBar
                     style="?android:attr/progressBarStyle"
@@ -27,7 +27,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/margin_8"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="@dimen/margin_8"/>
             <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
