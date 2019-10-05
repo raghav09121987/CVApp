@@ -66,7 +66,7 @@ class CVActivity : DaggerAppCompatActivity() {
         name.text = data?.name
         email.text = data?.email
         phoneNo.text = data?.phones
-        profSummaryContent.text = data?.professionalSummary
+        profSummaryContent.text = data?.professionalSummary?.stringToList()
         var expList = data?.pastExperience
         expList?.let { it -> addExperience(it) }
     }
@@ -84,5 +84,15 @@ class CVActivity : DaggerAppCompatActivity() {
                 .into(v.imageView)
         }
     }
-}
 
+     fun String.stringToList(): String? {
+        var stringArray = this.split(". ",".")
+        var convertedString: String? = ""
+        stringArray.forEach { i ->
+            if (i.isNotEmpty()) {
+                convertedString = "$convertedString$i.\n\n"
+            }
+        }
+        return convertedString
+    }
+}

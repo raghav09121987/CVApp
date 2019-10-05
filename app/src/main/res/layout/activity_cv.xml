@@ -91,11 +91,10 @@
                     android:text="@string/past_experience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top_30"
                     android:textSize="20dp"
                     android:id="@+id/pastExperienceTitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/margin_top_30"
+                    android:layout_marginStart="@dimen/margin_start_16"
                     app:layout_constraintTop_toBottomOf="@+id/profSummaryContent"/>
             <View
                     android:layout_width="match_parent"
