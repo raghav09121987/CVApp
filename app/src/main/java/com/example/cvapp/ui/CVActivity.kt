@@ -11,6 +11,7 @@ import com.bumptech.glide.RequestManager
 import com.example.cvapp.R
 import com.example.cvapp.models.CVResponse
 import com.example.cvapp.models.PastExperience
+import com.example.cvapp.util.stringToList
 import com.example.cvapp.viewmodels.ViewModelsProvidersFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_cv.*
@@ -51,7 +52,8 @@ class CVActivity : DaggerAppCompatActivity() {
                 }
             }
         })
-        viewModel.getCV()
+        if(savedInstanceState == null)
+            viewModel.getCV()
     }
 
     private fun showProgressBar(show: Boolean) {
@@ -83,16 +85,5 @@ class CVActivity : DaggerAppCompatActivity() {
                 .override(resources.getDimension(R.dimen.width).toInt(), resources.getDimension(R.dimen.height).toInt())
                 .into(v.imageView)
         }
-    }
-
-     fun String.stringToList(): String? {
-        var stringArray = this.split(". ",".")
-        var convertedString: String? = ""
-        stringArray.forEach { i ->
-            if (i.isNotEmpty()) {
-                convertedString = "$convertedString$i.\n\n"
-            }
-        }
-        return convertedString
     }
 }
