@@ -28,6 +28,15 @@ android {
     }
 }
 
+afterEvaluate {
+    android.sourceSets.all{
+        sourceSet ->
+            if(!sourceSet.name.startsWith("test")){
+                sourceSet.kotlin.setSrcDirs([])
+            }
+    }
+}
+
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -36,6 +45,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+
+    testImplementation 'org.mockito:mockito-inline:2.8.47'
 
     // AndroidX support design
     def material_version = "1.0.0"
