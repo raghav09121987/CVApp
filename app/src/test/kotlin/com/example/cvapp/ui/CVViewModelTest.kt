@@ -47,7 +47,7 @@ class CVViewModelTest {
         //Act
         cvViewModel.getCV()
         var returnResponse: Resource<CVResponse> = LiveDataTestUtil.getValue(cvViewModel.response())
-        println("Raghav ${returnResponse.data}")
+        println("Return Response: ${returnResponse.data}")
 
         //Assert
         Assertions.assertEquals(Resource.success(response).data?.email, returnResponse.data?.email)
